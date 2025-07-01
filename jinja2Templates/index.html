@@ -150,7 +150,8 @@
     }
 
     try {
-      const res = await fetch("/upload", {
+      const BACKEND_URL = "https://jarnotes.onrender.com"
+      const res = await fetch(BACKEND_URL, {
         method: "POST",
         body: formData
       });
