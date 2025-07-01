@@ -13,7 +13,7 @@ app= FastAPI()
 #env = Environment(loader = FileSystemLoader('jinja2Templates'))
 templates= Jinja2Templates(directory="jinja2Templates")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def home(request: Request):
