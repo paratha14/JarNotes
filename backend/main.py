@@ -8,8 +8,18 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 import fitz
 import re
+from fastapi.middleware.cors import CORSMiddleware
 
 app= FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://jarnotes.onrender.com"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 #env = Environment(loader = FileSystemLoader('jinja2Templates'))
 templates= Jinja2Templates(directory="jinja2Templates")
 
