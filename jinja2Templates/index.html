@@ -140,21 +140,31 @@
   // Submit form via fetch
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const file = fileInput.files[0];
+    if (!file || !file.name.endsWith(".pdf")) {
+      alert("Please upload a valid PDF file.");
+      return;
+    }
+
     const formData = new FormData(form);
     responseDiv.style.display = "block";
     responseDiv.innerHTML = "⏳ Generating Content...";
 
-    // Debug log
-    for (let [key, val] of formData.entries()) {
-      console.log(`${key}: ${val}`);
-    }
+    console.log("✅ File selected:", file.name);
+    console.log("📡 Sending request to backend...");
 
     try {
-      const BACKEND_URL = "https://jarnotes.onrender.com/upload"
+      const BACKEND_URL = "https://jarnotes.onrender.com/upload";
       const res = await fetch(BACKEND_URL, {
         method: "POST",
-        body: formData
+        body: formData,
       });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`Server error: ${res.status} – ${errText}`);
+      }
 
       const data = await res.json();
 
@@ -166,16 +176,11 @@
           ${data.result_from_jarvis || data.text || 'No content extracted.'}
         </div>
       `;
-    } catch(async (err) => {
-  let msg = "❌ Error: Failed to fetch";
-
-  try {
-    const resText = await err.response?.text?.();
-    msg += `<br><pre>${resText || ""}</pre>`;
-  } catch {}
-
-  responseDiv.innerHTML = `<div class="alert alert-danger">${msg}</div>`;
-});
+    } catch (err) {
+      responseDiv.innerHTML = `<div class="alert alert-danger">❌ Error: ${err.message}</div>`;
+      console.error("Fetch failed:", err);
+    }
+  });
 </script>
 
 </body>
