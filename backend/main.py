@@ -13,15 +13,9 @@ app= FastAPI()
 #env = Environment(loader = FileSystemLoader('jinja2Templates'))
 templates= Jinja2Templates(directory="jinja2Templates")
 
-#app.mount("/static", StaticFiles(directory="static"), name="static")
-
 @app.get("/")
 def home(request: Request):
     return {"message": "Welcome to JarNotes! the Backend is running."}
-
-@app.get("/upload", response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/upload")
 async def upload_file(upload_doc: UploadFile = File(...), task: str = Form(...), keyword: str = Form(default="")):
