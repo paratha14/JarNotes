@@ -166,10 +166,16 @@
           ${data.result_from_jarvis || data.text || 'No content extracted.'}
         </div>
       `;
-    } catch (err) {
-      responseDiv.innerHTML = `<div class="alert alert-danger">❌ Error: ${err.message}</div>`;
-    }
-  });
+    } catch(async (err) => {
+  let msg = "❌ Error: Failed to fetch";
+
+  try {
+    const resText = await err.response?.text?.();
+    msg += `<br><pre>${resText || ""}</pre>`;
+  } catch {}
+
+  responseDiv.innerHTML = `<div class="alert alert-danger">${msg}</div>`;
+});
 </script>
 
 </body>
