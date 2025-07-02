@@ -4,7 +4,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import fitz  # PyMuPDF
 import re
-from llm import process_file
+from backend.llm import process_file
+
 
 app = FastAPI()
 
