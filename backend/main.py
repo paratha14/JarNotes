@@ -12,6 +12,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://jar-notes-h6xy.vercel.app",
+        "https://jar-notes-h6xy-k9zzhjv03-paratha14s-projects.vercel.app",  
         "http://localhost:3000",  
         "http://127.0.0.1:3000"  
     ],  
