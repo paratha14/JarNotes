@@ -15,10 +15,10 @@ app= FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://jarnotes.onrender.com"],
+    allow_origins=["https://jar-notes-h6xy.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["https://jarnotes.onrender.com"],
+    allow_headers=["*"]
 )
 #env = Environment(loader = FileSystemLoader('jinja2Templates'))
 templates= Jinja2Templates(directory="jinja2Templates")
