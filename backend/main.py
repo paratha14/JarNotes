@@ -10,7 +10,7 @@ from backend.llm import process_file
 app = FastAPI()
 
 
-templates = Jinja2Templates(directory="backend/jinja2templates")
+templates = Jinja2Templates(directory="backend/jinja2Templates")
 
 
 
