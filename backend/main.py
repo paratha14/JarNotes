@@ -26,10 +26,6 @@ templates= Jinja2Templates(directory="jinja2Templates")
 @app.get("/")
 def home(request: Request):
     return {"message": "Welcome to JarNotes! the Backend is running."}
-    
-@app.post("/")
-async def post_root():
-    return {"message": "POST method at root is now allowed."}
 
 
 @app.post("/upload")
