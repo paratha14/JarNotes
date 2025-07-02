@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Form, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import fitz  # PyMuPDF
@@ -57,6 +57,6 @@ async def upload_file(
             content={"error": str(e)}
         )
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy", "message": "Server is running"}
+@app.head("/")
+def read_root_head():
+    return Response(status_code=200)
