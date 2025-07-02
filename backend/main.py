@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response 
 import fitz  # PyMuPDF
 import re
 from llm import process_file
@@ -19,6 +19,13 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"message": "Backend running ✅"}
+
+
+
+@app.options("/upload")
+async def options_upload():
+    return Response(status_code=204)
+
 
 @app.post("/upload")
 async def upload_file(
