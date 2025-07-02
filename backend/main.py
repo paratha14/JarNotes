@@ -10,7 +10,7 @@ app = FastAPI()
 
 
 templates = Jinja2Templates(directory="backend/jinja2templates")
-app.mount("/static", StaticFiles(directory="backend/static"), name="static")
+
 
 
 @app.get("/")
