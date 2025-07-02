@@ -9,8 +9,8 @@ from llm import process_file
 app = FastAPI()
 
 # Mount static files and templates
-app.mount("/static", StaticFiles(directory="jinja2templates"), name="static")
-templates = Jinja2Templates(directory="jinja2templates")
+app.mount("/static", StaticFiles(directory="../jinja2templates"), name="static")
+templates = Jinja2Templates(directory="../jinja2templates")
 
 @app.get("/")
 async def home(request: Request):
