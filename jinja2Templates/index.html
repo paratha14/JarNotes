@@ -72,7 +72,8 @@
 
     <!-- Unified Form -->
     <form id="taskForm" enctype="multipart/form-data">
-      <input type="file" id="fileInput" name="upload_doc" accept=".txt,.pdf" required style="display: none;">
+      <input type="file" id="fileInput" name="upload_doc" accept=".txt,.pdf" style="opacity: 0; position: absolute; z-index: -1;" required>
+
       <label for="fileInput" class="button-label">+ Upload File</label>
 
       <select name="task" class="form-select form-select-sm mt-3" aria-label="Select task" required>
