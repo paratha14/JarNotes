@@ -18,7 +18,7 @@ app.add_middleware(
     allow_origins=["https://jarnotes.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["https://jarnotes.onrender.com"],
 )
 #env = Environment(loader = FileSystemLoader('jinja2Templates'))
 templates= Jinja2Templates(directory="jinja2Templates")
