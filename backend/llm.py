@@ -11,16 +11,19 @@ llm= ChatGoogleGenerativeAI(
     
 )
 
-#f= open("demo.txt", "r")
-#file= f.read()
-
 def process_file(fi: str, user_input: int, topic: str):
     #user_input = int(input("Enter your choice \n1 for getting summary of the doc. \n2 for getting an explanation of the specified topic/keyword "))
     if user_input == "1":
         #f= open(fi, "r")
         #file= f.read()
         template= PromptTemplate(
-            template="""Give me a Summary of the following document in 10 lines only: {file}""",
+            template="""You are an expert summarizer. 
+        Analyze the following document carefully and provide a clear, concise summary in exactly 10 lines. 
+        Each line should capture a distinct and important point, maintaining the original meaning and context.
+        Avoid adding personal opinions or information not present in the text.
+        Use simple, professional language so the summary is easy to understand.
+        Document content:
+        {file}""",
             input_variables=["file"]
         )
         prompt= template.invoke({
@@ -45,7 +48,19 @@ def process_file(fi: str, user_input: int, topic: str):
 
         
         template= PromptTemplate(
-            template="Give me an explanation of the following topic: {topic} in the document in 5 lines only: {file}",
+            template="""You are an expert explainer. 
+        Read the provided document and focus only on the topic: {topic}. 
+        Provide a clear and concise explanation of this topic in exactly 5 lines. 
+        Along with the general meaning, also explain:
+        - How and where it is used in the document.
+        - In what sense or context it appears.
+        - Its role or importance in relation to other content.
+        - Any related aspects or implications present in the document.
+        Do not include personal opinions or external details not found in the document.
+
+        Document content:
+        {file}""",
+
             input_variables=["topic", "file"]
         )
         prompt= template.invoke({
@@ -65,7 +80,17 @@ def process_file(fi: str, user_input: int, topic: str):
         #f= open(fi, "r")
         #file= f.read()
         template= PromptTemplate(
-            template="""Give me Notes on the following document including all important matter along with 2-3 lines of ecxplanation: {file}""",
+            template="""You are an expert note-maker. 
+        Read the following document carefully and create clear, well-structured notes that:
+        - Cover all important topics, concepts, and key points from the document.
+        - Include relevant examples from the document wherever possible.
+        - Are crisp and concise, avoiding unnecessary details.
+        - Are organized in a way that makes them easy to revise during last-minute study.
+        - Use bullet points or numbered lists for better readability.
+        - Try to add examples too.
+
+        Document content:
+        {file}""",
             input_variables=["file"]
         )
         prompt= template.invoke({
