@@ -36,7 +36,7 @@ The LLM extracts, summarizes, or responds based on PDF context.
 
 You get instant, relevant output.
 
-👨‍💻 Ideal For
+ Ideal For
 Students reviewing study materials
 
 Researchers scanning through papers
