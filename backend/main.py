@@ -1,39 +1,41 @@
 from fastapi import FastAPI, File, UploadFile, Form, Request
 from fastapi.responses import JSONResponse, Response
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+
 import fitz  # PyMuPDF
 import re
-from backend.llm import process_file
-
+from llm import process_file
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-
-templates = Jinja2Templates(directory="backend/jinja2Templates")
-
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
-async def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+async def home():
+    return {"message": "Welcome to JarNotes API"}
 
 @app.post("/upload")
 async def upload_file(
-    upload_doc: UploadFile = File(...),
+    pdf: UploadFile = File(...),
     task: str = Form(...),
     keyword: str = Form(default="")
 ):
     try:
         # Validate file type
-        if not upload_doc.filename or not upload_doc.filename.lower().endswith(".pdf"):
+        if not pdf.filename or not pdf.filename.lower().endswith(".pdf"):
             return JSONResponse(
                 status_code=400, 
                 content={"error": "Only PDF files are supported."}
             )
 
         # Read and process PDF
-        pdf_bytes = await upload_doc.read()
+        pdf_bytes = await pdf.read()
         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
         text = "".join([page.get_text() for page in doc])
         doc.close()
@@ -44,7 +46,7 @@ async def upload_file(
 
         return JSONResponse(
             content={
-                "filename": upload_doc.filename,
+                "filename": pdf.filename,
                 "task": task,
                 "keyword": keyword,
                 "result_from_jarvis": cleaned
