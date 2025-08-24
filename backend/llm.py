@@ -106,5 +106,3 @@ def process_file(fi: str, user_input: int, topic: str):
         #print(messages)
         print(result)
     return result.content
-
-#process_file("demo.txt")
