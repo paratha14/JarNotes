@@ -18,7 +18,7 @@ def process_file(fi: str, user_input: int, topic: str):
         #file= f.read()
         template= PromptTemplate(
             template="""You are an expert summarizer. 
-        Analyze the following document carefully and provide a clear, concise summary in exactly 10 lines. 
+        Analyze the following document carefully and provide a clear, concise summary. 
         Each line should capture a distinct and important point, maintaining the original meaning and context.
         Avoid adding personal opinions or information not present in the text.
         Use simple, professional language so the summary is easy to understand.
@@ -50,7 +50,7 @@ def process_file(fi: str, user_input: int, topic: str):
         template= PromptTemplate(
             template="""You are an expert explainer. 
         Read the provided document and focus only on the topic: {topic}. 
-        Provide a clear and concise explanation of this topic in exactly 5 lines. 
+        Provide a clear and concise explanation of this topic in exactly 7-9 lines. 
         Along with the general meaning, also explain:
         - How and where it is used in the document.
         - In what sense or context it appears.
