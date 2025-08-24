@@ -4,3 +4,4 @@ langchain_core==0.3.74
 langchain_google_genai==2.1.9
 python-dotenv==1.1.1
 uvicorn==0.35.0
+PyMuPDF==1.23.9
