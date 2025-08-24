@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JarNotes - PDF Summarizer</title>
@@ -152,6 +154,13 @@
   text-align: justify; 
 }
 
+.summary pre {
+  font-family: 'Tomorrow', Georgia, serif;
+  font-size: 1rem;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -252,7 +261,9 @@
       .then(res => res.json())
       .then(data => {
         summaryBox.style.display = "block";
-        summaryBox.innerHTML = `<h3>Summary</h3><p>${data.result_from_jarvis}</p>`;
+        summaryBox.innerHTML = `<h3>From JarNotes: </h3><pre>${data.result_from_jarvis}</pre>`;
+
+
       })
       .catch(err => {
         console.error(err);
