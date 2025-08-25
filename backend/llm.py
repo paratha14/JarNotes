@@ -16,7 +16,7 @@ def process_file(fi: str, user_input: str, topic: str):
     
     if user_input == "1":   # Summary
         template = PromptTemplate(
-            template="""You are an expert cricket note-maker.  
+            template="""You are an expert Summerizer.  
 Summarize the following document into **well-structured bullet points** that are:  
 - Start **directly with the main heading of the content** (do not write things like "Here’s a summary" or "In conclusion").
 - Concise yet detailed enough for exam revision.  
@@ -76,3 +76,4 @@ Document content:
         print(result.content)
 
     return result.content if result else None
+
