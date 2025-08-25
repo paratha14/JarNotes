@@ -254,7 +254,7 @@
       pdfPreview.innerHTML = `<iframe src="${fileURL}"></iframe>`;
 
       // Send to backend
-      fetch("http://127.0.0.1:8000/upload", { 
+      fetch("https://jarnotes-production.up.railway.app/upload", { 
         method: "POST",
         body: formData
       })
