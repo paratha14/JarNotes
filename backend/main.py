@@ -64,6 +64,7 @@ async def upload_file(
 def read_root_head():
 
     return Response(status_code=200)    
-@app.get(/health)
+@app.get("/health")
 async def health():
     return {"status": "ok"}
+
