@@ -197,15 +197,35 @@
     </div>
   </div>
 
-  <!-- Upload Section -->
-  <div class="upload-section">
+<!-- Upload Section -->
+<div class="upload-section">
+  <div class="file-upload-wrapper">
+    <label for="pdfFile" class="file-upload-label">
+      <span>Choose Your PDF</span>
+    </label>
     <input type="file" id="pdfFile" accept="application/pdf" />
-    <!-- Dropdown -->
+    <div class="file-name" id="fileName"></div>
+  </div>
+
+  <div class="control-group">
     <select id="task">
-      <option value="1">Summarizer</option>
-      <option value="2">Explanation</option>
-      <option value="3">Notemaker</option>
+      <option value="1">📝 Summarizer</option>
+      <option value="2">💡 Explanation</option>
+      <option value="3">📚 Notemaker</option>
     </select>
+
+    <input type="text" id="keyword" placeholder="Enter keyword..." style="display:none;" />
+  </div>
+
+  <button class="upload-btn" onclick="uploadPDF()">Upload & Process</button>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="margin-top: 10px; color: #8a2be2; font-size: 16px;">Processing your PDF...</p>
+  </div>
+
+  <div class="pdf-preview" id="pdfPreview"></div>
+</div>
 
     <!-- Keyword input (hidden by default) -->
     <input type="text" id="keyword" placeholder="Enter keyword" style="display:none;" />
@@ -275,4 +295,5 @@
   </script>
 </body>
 </html>
+
 
