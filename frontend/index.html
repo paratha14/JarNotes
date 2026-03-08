@@ -228,8 +228,13 @@
       flex: 1;
       font-family: Arial, 'Segoe UI', sans-serif;
       font-size: 15px;
-      font-weight: 600;
-      color: #2d1a4a;
+      font-weight: 700;
+      /* JarNotes warm orange gradient */
+      background: linear-gradient(135deg, #f8bc94, #ff8c66);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.2px;
     }
 
     .cs-chevron {
@@ -315,17 +320,43 @@
 
     .opt-title {
       font-family: Arial, 'Segoe UI', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      color: #2d1a4a;
       line-height: 1.2;
+      /* base — overridden per option below */
+      color: #2d1a4a;
+    }
+
+    /* Summarizer — vivid purple */
+    .custom-option:nth-child(1) .opt-title {
+      background: linear-gradient(135deg, #8a2be2, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Explanation — electric sky blue */
+    .custom-option:nth-child(2) .opt-title {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Notemaker — emerald green */
+    .custom-option:nth-child(3) .opt-title {
+      background: linear-gradient(135deg, #059669, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .opt-subtitle {
       font-family: Arial, 'Segoe UI', sans-serif;
       font-size: 11.5px;
-      color: rgba(45, 26, 74, 0.5);
-      margin-top: 1px;
+      color: rgba(80, 40, 120, 0.45);
+      margin-top: 2px;
+      letter-spacing: 0.15px;
     }
 
     /* hide real select */
