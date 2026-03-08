@@ -508,19 +508,24 @@
     /* ---------------- SUMMARY ---------------- */
     .summary {
       font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 0.97rem;
-      line-height: 1.75;
-      color: #2e2040;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #1e1530;
       background: #faf8ff;
       border-left: 5px solid #8a2be2;
-      padding: 24px 28px;
-      margin: 20px auto;
+      padding: 28px 32px 32px;
+      margin: 24px auto;
       border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
-      max-width: 820px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+      max-width: 840px;
       width: calc(100% - 40px);
       display: none;
       text-align: left;
+    }
+
+    /* constrains line length for comfortable reading */
+    .summary-body {
+      max-width: 72ch;
     }
 
     /* header label */
@@ -529,8 +534,8 @@
       font-size: 1.4rem;
       letter-spacing: 2px;
       color: #8a2be2;
-      margin: 0 0 18px;
-      padding-bottom: 10px;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
       border-bottom: 2px solid rgba(138, 43, 226, 0.15);
       display: flex;
       align-items: center;
@@ -540,83 +545,104 @@
     /* headings inside markdown */
     .summary h1,
     .summary h2 {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: #5b1fa8;
-      margin: 20px 0 6px;
-      padding-left: 10px;
+      margin: 26px 0 8px;
+      padding: 6px 12px;
       border-left: 3px solid #a855f7;
+      background: rgba(168, 85, 247, 0.05);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.4;
     }
 
     .summary h3 {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.98rem;
+      font-weight: 700;
       color: #6d28d9;
-      margin: 14px 0 4px;
+      margin: 20px 0 6px;
+      letter-spacing: 0.2px;
     }
 
-    /* paragraphs */
+    /* paragraphs — key: generous vertical margin */
     .summary p {
-      margin: 6px 0;
+      margin: 14px 0;
+      color: #2a1e40;
     }
 
-    /* ordered & unordered lists */
+    /* lists */
     .summary ol,
     .summary ul {
-      padding-left: 22px;
-      margin: 6px 0 10px;
+      padding-left: 24px;
+      margin: 12px 0 18px;
     }
 
     .summary li {
-      margin-bottom: 5px;
-      padding-left: 4px;
+      margin-bottom: 12px;
+      padding-left: 6px;
+      line-height: 1.85;
     }
 
-    /* nested lists */
+    /* visual separator between top-level li items */
+    .summary ol>li+li,
+    .summary ul>li+li {
+      border-top: 1px solid rgba(138, 43, 226, 0.07);
+      padding-top: 10px;
+    }
+
+    /* nested lists — tighter spacing */
     .summary li>ul,
     .summary li>ol {
-      margin-top: 4px;
-      margin-bottom: 2px;
+      margin: 8px 0 4px;
     }
 
-    /* bold & italic */
+    .summary li>ul>li,
+    .summary li>ol>li {
+      margin-bottom: 6px;
+      border-top: none;
+      padding-top: 0;
+    }
+
+    /* bold — only for key terms, dark purple */
     .summary strong {
       color: #4c1d95;
       font-weight: 700;
     }
 
+    /* italic — no color change, just style
+       (removing purple on em avoids huge purple text walls) */
     .summary em {
-      color: #7c3aed;
+      font-style: italic;
+      color: inherit;
     }
 
     /* inline code */
     .summary code {
       background: rgba(138, 43, 226, 0.08);
-      padding: 1px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
-      font-size: 0.9em;
+      font-size: 0.88em;
       color: #7c3aed;
       font-family: 'Courier New', monospace;
     }
 
-    /* blockquote */
+    /* blockquote — soft purple card */
     .summary blockquote {
       border-left: 4px solid #c4b5fd;
-      margin: 10px 0;
-      padding: 6px 14px;
+      margin: 16px 0;
+      padding: 10px 18px;
       background: rgba(139, 43, 226, 0.04);
       border-radius: 0 8px 8px 0;
-      color: #5b21b6;
+      color: #4c1d95;
       font-style: italic;
+      line-height: 1.7;
     }
 
     /* horizontal rule */
     .summary hr {
       border: none;
-      border-top: 1px solid rgba(138, 43, 226, 0.18);
-      margin: 16px 0;
+      border-top: 1px solid rgba(138, 43, 226, 0.15);
+      margin: 22px 0;
     }
 
     /* ---------------- FOOTER ---------------- */
