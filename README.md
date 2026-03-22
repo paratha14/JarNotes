@@ -42,18 +42,6 @@ JarNotes is a modern, full-stack application engineered to revolutionize how you
 
 JarNotes operates as a client-server application, employing a clear separation of concerns to deliver its intelligent note-processing capabilities.
 
-```mermaid
-graph TD
-    A[User Input (Frontend)] --> B(API Request)
-    B --> C{Backend Service (main.py)}
-    C --> D[LLM Integration (llm.py)]
-    D --> E{LLM Processing}
-    E --> F[Processed Data]
-    F --> C
-    C --> G(API Response)
-    G --> H[Display Results (Frontend)]
-```
-
 1.  **User Interaction (Frontend)**: Users interact with the web-based interface (`frontend/index.html`) to input new notes or view existing processed insights.
 2.  **API Request (Backend)**: User actions trigger asynchronous API calls to the Python backend service, typically for note submission or retrieval.
 3.  **LLM Processing**: The `backend/main.py` service, acting as the API gateway, routes relevant requests to `backend/llm.py`. This module orchestrates interaction with a Large Language Model to perform tasks like summarization, categorization, or expansion of the user's input.
